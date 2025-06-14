@@ -1,0 +1,47 @@
+﻿<Window x:Class="Angelo.MainWindow"
+        xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+        xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+        Title="Gestion des personnes" Height="400" Width="600">
+    <Grid Margin="10">
+        <Grid.RowDefinitions>
+            <RowDefinition Height="Auto"/>
+            <RowDefinition Height="*"/>
+        </Grid.RowDefinitions>
+
+        <!-- Formulaire -->
+        <StackPanel Orientation="Vertical" Margin="0,0,0,10">
+            <TextBlock Text="Nom" />
+            <TextBox x:Name="TxtNom" Margin="0,0,0,5"/>
+
+            <TextBlock Text="Prénom" />
+            <TextBox x:Name="TxtPrenom" Margin="0,0,0,5"/>
+
+            <TextBlock Text="Email" />
+            <TextBox x:Name="TxtEmail" Margin="0,0,0,5"/>
+
+            <TextBlock Text="Recherche par nom" />
+            <TextBox x:Name="TxtRecherche" Margin="0,0,0,10" />
+
+            <StackPanel Orientation="Horizontal" HorizontalAlignment="Left" Margin="0,0,0,10">
+                <Button Content="Ajouter" Click="BtnAjouter_Click" Margin="0,0,5,0"/>
+                <Button Content="Modifier" Click="BtnModifier_Click" Margin="0,0,5,0"/>
+                <Button Content="Supprimer" Click="BtnSupprimer_Click" Margin="0,0,5,0"/>
+                <Button Content="Rechercher" Click="BtnRechercher_Click"/>
+            </StackPanel>
+        </StackPanel>
+
+        <!-- Liste -->
+        <DataGrid x:Name="DataGridPersonnes"
+                  Grid.Row="1"
+                  AutoGenerateColumns="False"
+                  CanUserAddRows="False"
+                  SelectionChanged="DataGridPersonnes_SelectionChanged">
+            <DataGrid.Columns>
+                <DataGridTextColumn Header="ID" Binding="{Binding Id}" Width="Auto"/>
+                <DataGridTextColumn Header="Nom" Binding="{Binding Nom}" Width="*"/>
+                <DataGridTextColumn Header="Prénom" Binding="{Binding Prenom}" Width="*"/>
+                <DataGridTextColumn Header="Email" Binding="{Binding Email}" Width="*"/>
+            </DataGrid.Columns>
+        </DataGrid>
+    </Grid>
+</Window>
